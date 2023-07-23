@@ -300,11 +300,13 @@ const anzhiyu = {
     const nowMode = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
     const rightMenu = document.getElementById("rightMenu");
     if (nowMode === "light") {
+      document.getElementsByTagName('html')[0].className = 'darkmode'
       activateDarkMode();
       saveToLocal.set("theme", "dark", 2);
       GLOBAL_CONFIG.Snackbar !== undefined && anzhiyu.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
       rightMenu.querySelector(".menu-darkmode-text").textContent = "浅色模式";
     } else {
+      document.getElementsByTagName('html')[0].classList.remove('darkmode');
       activateLightMode();
       saveToLocal.set("theme", "light", 2);
       GLOBAL_CONFIG.Snackbar !== undefined && anzhiyu.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
